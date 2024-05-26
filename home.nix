@@ -26,6 +26,7 @@
       eza
       kitty
       hyfetch
+      clang # this is temporary since idk how to install clangd-lsp elsewhere
     ];
 
     sessionVariables = {
@@ -60,6 +61,16 @@
   # Let Home Manager install and manage itself.
 
   programs = {
+    git = {
+      enable = true;
+      userName = "messatsuu";
+      userEmail = "hirsignicolas@gmail.com";
+      aliases = {
+        undo = "reset HEAD~1 --mixed";
+        amend = "commit -a --amend";
+      };
+    };
+
     home-manager.enable = true;
   };
 }

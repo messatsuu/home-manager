@@ -4,8 +4,8 @@
   programs.zsh = {
     enable = true;
     # enableCompletion = true;
-    # autosuggestion.enable = true;
-    # syntaxHighlighting.enable = true;
+    enableAutosuggestions = true;
+    syntaxHighlighting.enable = true;
     autocd = true;
     defaultKeymap = "viins";
 
@@ -13,6 +13,9 @@
     initExtra = ''
       autoload -U colors && colors
       export PS1="%{$fg[green]%}[ %n%{$fg[blue]%}@%m %~ %{$fg[green]%}]%{$reset_color%} "
+      zle -N history-beginning-search-backward-end history-search-end
+      zle -N history-beginning-search-forward-end history-search-end
+
       bindkey "^[[A" history-beginning-search-backward-end
       bindkey "^[[B" history-beginning-search-forward-end
       bindkey -M viins 'hc' vi-cmd-mode
