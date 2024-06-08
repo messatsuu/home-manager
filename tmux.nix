@@ -23,7 +23,8 @@ in
     keyMode = "vi";
     baseIndex = 1;
     terminal = "tmux-256color";
-    historyLimit = 100000;
+    historyLimit = 100;
+    tmuxinator.enable = true;
 
     extraConfig = ''
       set-option -g detach-on-destroy off
@@ -38,6 +39,7 @@ in
       bind M-x kill-session
       bind M-n next-window
       bind M-p previous-window
+      set -s escape-time 0
 
       set -g @tokyo-night-tmux_show_path 1
     '';

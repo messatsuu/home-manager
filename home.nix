@@ -4,7 +4,13 @@
   imports = [
     ./tmux.nix
     ./zsh.nix
+    ./kitty.nix
+    ./gtk.nix
   ];
+
+  fonts.fontconfig.enable = true;
+  # Discord is a proprietary software, so we need to enable it.
+  nixpkgs.config.allowUnfree = true;
   
   home = {
     username = "nicolas";
@@ -15,8 +21,10 @@
     stateVersion = "23.11"; # Please read the comment before changing.
 
     packages = with pkgs; [
+      # programming / terimanl
       neovim
       tmux
+      jq
       zsh
       ripgrep
       fd
@@ -24,29 +32,48 @@
       git
       nodejs
       eza
-      kitty
       hyfetch
-      clang # this is temporary since idk how to install clangd-lsp elsewhere
+      docker
+      docker-compose
+      wireplumber # session-manager for pipewire
+      vesktop # for sceen-sharing
+      # php 
+      php81Packages.phpstan
+      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+
+      # free time
+      gzdoom
+      discord
+
+      # Hyprdots packages
+      bluez
+      bluez-tools
+      # bluez-utils
+      blueman
+      rofi-wayland
+      glib # what is this for??
+      dunst
+      brightnessctl
+      dolphin
+      imagemagick
+      hyprpicker
+      swaylock-effects
+      wlogout
+      waybar
     ];
 
     sessionVariables = {
       EDITOR = "nvim";
       DOTFILES_PATH = "${config.xdg.configHome}/dotfiles";
       NVIM_PATH = "${config.xdg.configHome}/nvim";
+      HOME_MANAGER_PATH = "${config.xdg.configHome}/home-manager";
     };
 
-    file = {
-      # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-      # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-      # # symlink to the Nix store copy.
-      # ".screenrc".source = dotfiles/screenrc;
-  
-      # # You can also set the file content immediately.
-      # ".gradle/gradle.properties".text = ''
-      #   org.gradle.console=verbose
-      #   org.gradle.daemon.idletimeout=3600000
-      # '';
-    };
+    activation.linkMyFiles = config.lib.dag.entryAfter ["writeBoundary"] ''
+      for directory in ${config.xdg.configHome}/home-manager/dotfiles/*; do
+        ln -s $directory "${config.xdg.configHome}/$(basename $directory)";
+      done
+    '';
   };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -58,7 +85,10 @@
   # Manager then you have to manually source 'hm-session-vars.sh' located at
   #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
 
-  # Let Home Manager install and manage itself.
+  qt = {
+    enable = true;
+    style.name = "adwaita-dark";
+  };
 
   programs = {
     git = {
@@ -71,6 +101,7 @@
       };
     };
 
+  # Let Home Manager install and manage itself.
     home-manager.enable = true;
   };
 }

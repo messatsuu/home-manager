@@ -4,7 +4,7 @@
   programs.zsh = {
     enable = true;
     # enableCompletion = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     autocd = true;
     defaultKeymap = "viins";
@@ -34,7 +34,9 @@
       n = "nvim";
       mux = "tmuxinator";
       t = "tmux";
-      ls = "eza --icons";
+      ls = "eza --icons auto";
+      dock = "result=\${PWD##*/} && docker exec -ti \${result:-/} \${1:-/bin/bash}";
+
       # timer-work = 'timer -f 45m && dunstify "Timer" "Work session ended"'
       # timer-break = 'timer -f 20m && dunstify "Timer" "Break session ended"'
     };
