@@ -32,12 +32,13 @@
 
     shellAliases = {
       n = "nvim";
-      mux = "tmuxinator";
       t = "tmux";
       ls = "eza --icons auto";
+      c = "clear";
+      mux = "tmuxinator";
       dock = "result=\${PWD##*/} && docker exec -ti \${result:-/} \${1:-/bin/bash}";
       updateNix = "su -c \"nix-channel --update && sudo nixos-rebuild switch\"";
-      updateHome = "sudo -i nix-channel --update && home-manager switch --flake .#user@hostname";
+      updateHome = "sudo -i nix-channel --update && home-manager switch";
 
       # timer-work = 'timer -f 45m && dunstify "Timer" "Work session ended"'
       # timer-break = 'timer -f 20m && dunstify "Timer" "Break session ended"'

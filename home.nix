@@ -21,7 +21,7 @@
     stateVersion = "23.11"; # Please read the comment before changing.
 
     packages = with pkgs; [
-      # programming / terimanl
+      # programming / terminal
       neovim
       tmux
       jq
@@ -48,6 +48,10 @@
       # free time
       gzdoom
       discord
+      keymapp
+
+      # nvim (lsp's)
+      nodePackages.volar
 
       # Hyprdots packages
       bluez
@@ -64,6 +68,7 @@
       swaylock-effects
       wlogout
       waybar
+      pamixer
     ];
 
     sessionVariables = {
@@ -73,9 +78,10 @@
       HOME_MANAGER_PATH = "${config.xdg.configHome}/home-manager";
     };
 
+    # creates a symlink to the dotfiles in the home-manager directory (if the directory doesn't exist yet)
     activation.linkMyFiles = config.lib.dag.entryAfter ["writeBoundary"] ''
-      for directory in ${config.xdg.configHome}/home-manager/dotfiles/*; do
-        ln -s $directory "${config.xdg.configHome}/$(basename $directory)";
+      for directory in ${config.xdg.configHome}/home-manager/.config/*; do
+        [[ -d "${config.xdg.configHome}/$(basename $directory)" ]] || ln -s $directory "${config.xdg.configHome}/$(basename $directory)";
       done
     '';
   };
@@ -104,6 +110,8 @@
         amend = "commit -a --amend";
       };
     };
+
+    gh.gitCredentialHelper.enable = true;
 
   # Let Home Manager install and manage itself.
     home-manager.enable = true;

@@ -23,7 +23,7 @@ in
     keyMode = "vi";
     baseIndex = 1;
     terminal = "tmux-256color";
-    historyLimit = 100;
+    historyLimit = 1000;
     tmuxinator.enable = true;
 
     extraConfig = ''
