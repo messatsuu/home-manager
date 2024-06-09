@@ -11,8 +11,7 @@
 # <% end %>
 
 name: <%= WDIR.split('/').last  %>
-# root: ~/src/<%= @args[0] %>
-root: ~/src/messatsuu-home/
+root: ~/<%= @args[0] %>
 
 # Note that the pre and post options have been deprecated and will be replaced by
 # project hooks.
@@ -40,4 +39,4 @@ windows:
       # synchronize: after
       panes:
         - nvim
-  - docker: dock
+  # - docker: dock

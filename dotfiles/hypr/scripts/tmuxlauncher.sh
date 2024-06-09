@@ -19,11 +19,25 @@ r_override="listview{columns:4;} element{orientation:vertical;border-radius:${el
 
 
 # launch rofi menu
-RofiSel=$(ls $HOME/src | sed 's/spitex-bern.ch/spitexb/g;s/cloudtec.ch/cloudtec/g' | rofi -dmenu -config $RofiConf)
+selectable_elements=$(ls $HOME/src)
+
+custom_elements=("home-manager" "nvim")
+for element in "${custom_elements[@]}"; do
+    selectable_elements+="\n$element"
+done
+
+RofiSel=$(printf "$selectable_elements" | rofi -dmenu -config "$RofiConf")
 
 
-# launch tmuxinator sessionc
+# check if the selected value is in the custom elements
+if [[ $(echo ${custom_elements[@]} | fgrep -w $RofiSel) ]]; then
+    prefix=".config"
+else
+    prefix="src"
+fi
+
+launch tmuxinator session
 if [ ! -z $RofiSel ] ; then
     dunstify -a "Terminal" "Tmux Launched" "Tmuxinator session: $RofiSel" -u low
-    tmuxinator b $RofiSel
+    tmuxinator b "$prefix/$RofiSel"
 fi

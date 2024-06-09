@@ -35,11 +35,15 @@
       hyfetch
       docker
       docker-compose
+      btop
       wireplumber # session-manager for pipewire
       vesktop # for sceen-sharing
       # php 
       php81Packages.phpstan
       (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+      # low level programming
+      rustup
+      gnumake
 
       # free time
       gzdoom

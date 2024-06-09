@@ -36,6 +36,8 @@
       t = "tmux";
       ls = "eza --icons auto";
       dock = "result=\${PWD##*/} && docker exec -ti \${result:-/} \${1:-/bin/bash}";
+      updateNix = "su -c \"nix-channel --update && sudo nixos-rebuild switch\"";
+      updateHome = "sudo -i nix-channel --update && home-manager switch --flake .#user@hostname";
 
       # timer-work = 'timer -f 45m && dunstify "Timer" "Work session ended"'
       # timer-break = 'timer -f 20m && dunstify "Timer" "Break session ended"'
@@ -44,7 +46,6 @@
     oh-my-zsh = {
       enable = true;
       plugins = [ "git" ];
-      # theme = "terminalparty";
     };
   };
 }
