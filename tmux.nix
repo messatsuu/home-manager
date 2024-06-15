@@ -29,10 +29,10 @@ in
     extraConfig = ''
       set-option -g detach-on-destroy off
       set -ga terminal-overrides ",*256col*:Tc"
-      bind-key -n C-h next-window
+      bind-key -n C-s next-window
       bind-key -n C-t switch-client -n
       bind-key -n C-n switch-client -p
-      bind-key -n C-s previous-window
+      bind-key -n C-h previous-window
       bind-key M-o send-prefix
       bind-key -n C-g copy-mode \;
       bind x kill-session
