@@ -36,6 +36,7 @@
       docker-compose
       btop
       unzip
+      tldr
       wireplumber # session-manager for pipewire
       vesktop # for sceen-sharing
       # php 
