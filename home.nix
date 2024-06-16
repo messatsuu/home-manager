@@ -59,7 +59,7 @@
       # bluez-utils
       blueman
       rofi-wayland
-      glib # what is this for??
+      # glib # what is this for??
       dunst
       brightnessctl
       dolphin
@@ -69,6 +69,7 @@
       wlogout
       waybar
       pamixer
+      swww
     ];
 
     sessionVariables = {

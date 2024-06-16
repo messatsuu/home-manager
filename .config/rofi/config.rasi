@@ -29,7 +29,6 @@ window {
     border-radius:               40px;
     border-color:                @main-br;
     background-color:            transparent;
-    background-color:            @main-bg;
 }
 mainbox {
     enabled:                     true;

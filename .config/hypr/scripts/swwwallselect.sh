@@ -33,7 +33,7 @@ r_override="element{border-radius:${elem_border}px;} listview{columns:6;spacing:
 currentWall=`basename $fullPath`
 RofiSel=$( find "${wallPath}" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) -exec basename {} \; | sort | while read rfile
 do
-    echo -en "$rfile\x00icon\x1f${cacheDir}/${gtkTheme}/${rfile}\n"
+    echo -en "$rfile\x00icon\x1f${cacheDir}/Decay-Green/${rfile}\n"
 done | rofi -dmenu -theme-str "${r_override}" -config "${RofiConf}" -select "${currentWall}")
 
 
