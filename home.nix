@@ -73,6 +73,7 @@
       swww
       grimblast
       swappy
+      cliphist
     ];
 
     sessionVariables = {
