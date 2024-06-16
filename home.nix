@@ -29,7 +29,6 @@
       ripgrep
       fd
       gcc
-      git
       nodejs
       eza
       hyfetch
@@ -115,6 +114,7 @@
   programs = {
     git = {
       enable = true;
+      package = pkgs.gitFull;
       userName = "messatsuu";
       userEmail = "hirsignicolas@gmail.com";
       aliases = {
@@ -122,8 +122,6 @@
         amend = "commit -a --amend";
       };
     };
-
-    gh.gitCredentialHelper.enable = true;
 
   # Let Home Manager install and manage itself.
     home-manager.enable = true;
