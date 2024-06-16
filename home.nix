@@ -36,6 +36,7 @@
       docker
       docker-compose
       btop
+      unzip
       wireplumber # session-manager for pipewire
       vesktop # for sceen-sharing
       # php 
@@ -70,6 +71,8 @@
       waybar
       pamixer
       swww
+      grimblast
+      swappy
     ];
 
     sessionVariables = {
@@ -85,6 +88,14 @@
         [[ -d "${config.xdg.configHome}/$(basename $directory)" ]] || ln -s $directory "${config.xdg.configHome}/$(basename $directory)";
       done
     '';
+
+    pointerCursor = {
+      gtk.enable = true;
+      package = pkgs.gnome.adwaita-icon-theme;
+      name = "Adwaita";
+      size = 16;
+    };
+
   };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
