@@ -9,7 +9,7 @@
   ];
 
   fonts.fontconfig.enable = true;
-  # Discord is a proprietary software, so we need to enable it.
+  # Discord, Spotify-client are proprietary, so we need to enable it.
   nixpkgs.config.allowUnfree = true;
   
   home = {
@@ -50,6 +50,9 @@
       gzdoom
       discord
       keymapp
+      spotify
+      # emacs
+      emacs29-pgtk
 
       # nvim (lsp's)
       nodePackages.volar

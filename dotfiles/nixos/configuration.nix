@@ -22,7 +22,17 @@
   
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  # boot.loader.systemd-boot.enable = true;
+  boot.loader.grub = {
+    enable = true;
+    devices = [ "nodev" ];
+    useOSProber = true;
+    efiSupport = true;
+
+    # GRUB Customization
+    splashImage = /home/nicolas/.config/dotfiles/pics/anya.png;
+    fontSize = 16;
+  };
   boot.loader.efi.canTouchEfiVariables = true;
 
   # NOTE: testing fixes for freeze with this:
@@ -33,6 +43,10 @@
 
   boot.extraModprobeConfig = ''
     options rtw88_pci disable_aspm=1
+  '';
+
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
   '';
 
   networking.hostName = "nixos"; # Define your hostname.
@@ -70,7 +84,6 @@
 
   hardware.opengl = {
     enable = true;
-    driSupport = true;
     driSupport32Bit = true;
   };
 
@@ -128,7 +141,8 @@
    ripgrep
    fd
    kitty
-   git
+   # git
+   gitFull
    home-manager
    firefox
    wl-clipboard
@@ -153,8 +167,33 @@
     jack.enable = true;
   };
 
-  services.displayManager.sddm.wayland.enable = true;
-  services.xserver.displayManager.sddm.enable = true;
+  # TODO: fix sddm as display manager
+  # services.xserver.displayManager.sddm = {
+  #   enable = true;
+  #
+  #   wayland = {
+  #     enable = true;
+  #     # compositorCommand = "${lib.getExe' pkgs.kdePackages.kwin "kwin_wayland"} --drm --no-lockscreen --no-global-shortcuts --locale1";
+  #   };
+  #
+  #   extraPackages = with pkgs; [
+  #     kdePackages.layer-shell-qt
+  #   ];
+  #
+  #   settings = {
+  #  #    General = {
+  #  #      GreeterEnvironment = lib.concatStringsSep "," [
+  #  # "QT_WAYLAND_SHELL_INTEGRATION=layer-shell"
+  #  #      ];
+  #  #    };
+  #
+  #     Theme = {
+  #       # Both of these are nessecary otherwise the cursor isn't shown at all
+  #       CursorTheme = "breeze_cursors";
+  #       CursorSize = 24;
+  #     };
+  #   };
+  # };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
