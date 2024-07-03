@@ -39,23 +39,27 @@
       tldr
       wireplumber # session-manager for pipewire
       vesktop # for sceen-sharing
+
       # php 
       php81Packages.phpstan
       (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
       # low level programming
       rustup
       gnumake
+      go
 
       # free time
       gzdoom
       discord
       keymapp
       spotify
-      # emacs
+      # obsidian
       emacs29-pgtk
 
-      # nvim (lsp's)
+      # nvim (lsp's since we cannot use mason)
       nodePackages.volar
+      gopls
+      nil
 
       # Hyprdots packages
       bluez
