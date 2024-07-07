@@ -53,10 +53,16 @@
       discord
       keymapp
       spotify
-      # obsidian
+      obsidian
       emacs29-pgtk
 
-      # nvim (lsp's since we cannot use mason)
+      # nvim 
+      # needed since lazy.nvim now uses luarocks
+      python39
+      lua5_1
+      lua51Packages.luarocks
+
+      # (lsps since we cannot use mason)
       nodePackages.volar
       gopls
       nil
