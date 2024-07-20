@@ -61,9 +61,10 @@
       python39
       lua5_1
       lua51Packages.luarocks
+      # sqlite # used for telescope's smart_history plugin
 
       # (lsps since we cannot use mason)
-      nodePackages.volar
+      # nodePackages.volar
       gopls
       nil
 
@@ -105,7 +106,7 @@
 
     pointerCursor = {
       gtk.enable = true;
-      package = pkgs.gnome.adwaita-icon-theme;
+      package = pkgs.adwaita-icon-theme;
       name = "Adwaita";
       size = 16;
     };

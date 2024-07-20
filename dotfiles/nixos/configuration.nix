@@ -71,7 +71,7 @@
   users.users.nicolas = {
     isNormalUser = true;
     description = "Nicolas Hirsig";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "audio" ];
     packages = with pkgs; [];
     shell = pkgs.zsh;
   };
@@ -154,8 +154,9 @@
   # foo bar
   ];
 
-  # Audio output with pipewire
-  sound.enable = true;
+  # Audio output with pulseaudio
+  # sound.enable = true;
+  hardware.pulseaudio.enable = true;
   services.pipewire = {
     enable = true;
     audio.enable = true;

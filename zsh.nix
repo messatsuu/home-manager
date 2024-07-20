@@ -38,8 +38,8 @@
       mux = "tmuxinator";
       dock = "result=\${PWD##*/} && docker exec -ti \${result:-/} \${1:-/bin/bash}";
       showLatestNixChanges = "nix store diff-closures \$(\\ls -d /nix/var/nix/profiles/*|tail -2)";
-      updateNix = "su -c \"nix-channel --update && sudo nixos-rebuild switch\" && showLatestNixChanges";
-      updateHome = "sudo -i nix-channel --update && home-manager switch";
+      nix-update = "su -c \"nix-channel --update && sudo nixos-rebuild switch\" && showLatestNixChanges";
+      home-update = "sudo -i nix-channel --update && home-manager switch";
 
       # timer-work = 'timer -f 45m && dunstify "Timer" "Work session ended"'
       # timer-break = 'timer -f 20m && dunstify "Timer" "Break session ended"'
