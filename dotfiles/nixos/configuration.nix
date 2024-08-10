@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
@@ -40,7 +40,6 @@
   # Enable all sysrq functions (useful to recover from some issues):
   boot.kernel.sysctl."kernel.sysrq" = 1; # NixOS default: 16 (only the sync command)
   # Documentation: https://www.kernel.org/doc/html/latest/admin-guide/sysrq.html
-
   boot.extraModprobeConfig = ''
     options rtw88_pci disable_aspm=1
   '';
@@ -63,15 +62,20 @@
 
   # Configure keymap in X11
   services.xserver = {
-    layout = "us";
-    xkbVariant = "";
+    # enable = true;
+    # displayManager.gdm.enable = true;
+    # desktopManager.gnome.enable = true;
+    xkb = {
+      layout = "us";
+      variant = "";
+    };
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.nicolas = {
     isNormalUser = true;
     description = "Nicolas Hirsig";
-    extraGroups = [ "networkmanager" "wheel" "docker" "audio" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [];
     shell = pkgs.zsh;
   };
@@ -112,6 +116,7 @@
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+  hardware.pulseaudio.enable = true;
 
   programs.hyprland = {
     enable = true;
@@ -136,27 +141,27 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-   neovim
-   tmux
-   ripgrep
-   fd
-   kitty
-   # git
-   gitFull
-   home-manager
-   firefox
-   wl-clipboard
-   pavucontrol
-  #  wget
+    neovim
+    tmux
+    ripgrep
+    fd
+    kitty
+    # git
+    gitFull
+    home-manager
+    firefox
+    wl-clipboard
+    pavucontrol
+    #  wget
+    # Here, the helix package is installed from the helix input data source (see flake)
+    inputs.helix.packages."${pkgs.system}".helix
   ];
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
   # foo bar
   ];
 
-  # Audio output with pulseaudio
-  # sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  # Audio output with pipewire
   services.pipewire = {
     enable = true;
     audio.enable = true;

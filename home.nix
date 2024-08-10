@@ -37,11 +37,15 @@
       btop
       unzip
       tldr
+      timer
+      ranger
+      warp-terminal
+
       wireplumber # session-manager for pipewire
       vesktop # for sceen-sharing
 
       # php 
-      php81Packages.phpstan
+      php83Packages.phpstan
       (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
       # low level programming
       rustup
@@ -88,6 +92,7 @@
       grimblast
       swappy
       cliphist
+      zathura
     ];
 
     sessionVariables = {
@@ -106,7 +111,7 @@
 
     pointerCursor = {
       gtk.enable = true;
-      package = pkgs.adwaita-icon-theme;
+      package = pkgs.gnome.adwaita-icon-theme;
       name = "Adwaita";
       size = 16;
     };

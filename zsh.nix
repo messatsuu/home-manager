@@ -41,8 +41,8 @@
       nix-update = "su -c \"nix-channel --update && sudo nixos-rebuild switch\" && showLatestNixChanges";
       home-update = "sudo -i nix-channel --update && home-manager switch";
 
-      # timer-work = 'timer -f 45m && dunstify "Timer" "Work session ended"'
-      # timer-break = 'timer -f 20m && dunstify "Timer" "Break session ended"'
+      timer-work = "timer -f 45m && dunstify \"Timer\" \"Work session ended\"";
+      timer-break = "timer -f 20m && dunstify \"Timer\" \"Break session ended\"";
     };
 
     oh-my-zsh = {
