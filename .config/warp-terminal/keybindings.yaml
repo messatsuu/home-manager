@@ -1,0 +1,16 @@
+---
+"terminal:scroll_up_one_line": none
+"terminal:scroll_down_one_line": none
+"editor_view:select_all": ctrl-shift-A
+"workspace:activate_next_tab": ctrl-s
+"workspace:toggle_launch_config_palette": ctrl-shift-M
+"workspace:open_launch_config_save_modal": ctrl-meta-h
+"workspace:activate_prev_tab": ctrl-h
+"editor_view:backspace": none
+"editor_view:delete": none
+"workspace:toggle_command_palette": meta-m
+"editor_view:clear_and_copy_lines": none
+"editor_view:move_to_line_end": ctrl-e
+"code_view:save": none
+"workspace:toggle_ai_assistant": none
+"editor_view:move_to_line_start": ctrl-a
