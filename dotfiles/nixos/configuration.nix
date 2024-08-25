@@ -62,9 +62,6 @@
 
   # Configure keymap in X11
   services.xserver = {
-    # enable = true;
-    # displayManager.gdm.enable = true;
-    # desktopManager.gnome.enable = true;
     xkb = {
       layout = "us";
       variant = "";
@@ -116,7 +113,7 @@
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
-  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.enable = false;
 
   programs.hyprland = {
     enable = true;

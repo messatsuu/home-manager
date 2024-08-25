@@ -37,7 +37,7 @@ else
 fi
 
 launch tmuxinator session
-if [ ! -z $RofiSel ] ; then
+if [ ! -z "$RofiSel" ] ; then
     dunstify -a "Terminal" "Tmux Launched" "Tmuxinator session: $RofiSel" -u low
     tmuxinator b "$prefix/$RofiSel"
 fi
