@@ -43,6 +43,7 @@
 
       wireplumber # session-manager for pipewire
       vesktop # for sceen-sharing
+      xdg-utils # for opening urls in the browser (e.g. xdg-open)
 
       # php 
       php83Packages.phpstan
@@ -81,6 +82,7 @@
       # glib # what is this for??
       dunst
       brightnessctl
+      
       dolphin
       imagemagick
       hyprpicker
