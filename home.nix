@@ -60,6 +60,7 @@
       spotify
       obsidian
       emacs29-pgtk
+      cbonsai
 
       # nvim 
       # needed since lazy.nvim now uses luarocks

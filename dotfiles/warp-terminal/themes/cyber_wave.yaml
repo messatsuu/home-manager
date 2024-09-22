@@ -1,7 +1,7 @@
 # Just Cyber Wave with a custom accent
 name: Custom Cyber Wave
 background:
-  top: "#002633"
+  top: "#000000"
   bottom: "#000000"
 accent: "#ff757f"
 foreground: "#ffffff"

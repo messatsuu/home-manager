@@ -21,6 +21,7 @@
       bindkey -M viins 'hc' vi-cmd-mode
       bindkey "^P" up-line-or-search
       bindkey "^N" down-line-or-search
+      cbonsai -p # show cool bonsai tree on startup : )
     '';
 
     prezto = {
