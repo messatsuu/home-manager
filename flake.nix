@@ -5,7 +5,6 @@
     # Specify the source for Home Manager and Nixpkgs
     home-manager.url = "github:nix-community/home-manager/release-24.05"; 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
-    zen-browser.url = "github:MarceColl/zen-browser-flake";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
