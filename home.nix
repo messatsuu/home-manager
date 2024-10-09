@@ -49,18 +49,26 @@
       php83Packages.phpstan
       (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
       # low level programming
-      rustup
+      gleam
+      erlang # needed for compiling gleam
       gnumake
       go
 
       # free time
-      gzdoom
-      discord
       keymapp
       spotify
       obsidian
       emacs29-pgtk
       cbonsai
+      # Gaming
+      gzdoom
+      discord
+      (retroarch.override {
+        cores = with libretro; [
+          bsnes-hd
+          beetle-psx-hw
+        ];
+      })
 
       # nvim 
       # needed since lazy.nvim now uses luarocks
