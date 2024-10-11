@@ -4,7 +4,6 @@
 set -eu -o pipefail
 
 cd "$(dirname "$0")"
-nixpkgs=../../../../.
 
 err() {
     echo "$*" >&2
@@ -54,7 +53,7 @@ get_version() {
 sri_get() {
     local sri
     output=$(nix-build  --expr \
-        "with import $nixpkgs {};
+        "with import <nixpkgs> {};
          fetchurl {
            url = \"$1\";
          }" 2>&1 || true)

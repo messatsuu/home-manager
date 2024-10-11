@@ -40,6 +40,7 @@
       timer
       ranger
       warp-terminal
+      shellcheck
 
       wireplumber # session-manager for pipewire
       vesktop # for sceen-sharing
