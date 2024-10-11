@@ -95,11 +95,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1724819573,
-        "narHash": "sha256-GnR7/ibgIH1vhoy8cYdmXE6iyZqKqFxQSVkFgosBh6w=",
+        "lastModified": 1727348695,
+        "narHash": "sha256-J+PeFKSDV+pHL7ukkfpVzCOO7mBSrrpJ3svwBFABbhI=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "71e91c409d1e654808b2621f28a327acfdad8dc2",
+        "rev": "1925c603f17fc89f4c8f6bf6f631a802ad85d784",
         "type": "github"
       },
       "original": {
@@ -161,17 +161,17 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1725529174,
-        "narHash": "sha256-6hhiPXXZw24jaQJKJgaLIZ9Z8iEs25Sb+xMqEv6t2Go=",
-        "owner": "MarceColl",
-        "repo": "zen-browser-flake",
-        "rev": "5fce6f9bc9b2bda1f0281fcbef3160903ddc5882",
-        "type": "github"
+        "lastModified": 1728679720,
+        "narHash": "sha256-XrMu/zKzqz3OlGwziGo0l1fAU0nX6O5RjJvXxG2qTcM=",
+        "ref": "refs/heads/master",
+        "rev": "8c4c657fe6a817ec7b3e8739fb7996e4ab7fc384",
+        "revCount": 35,
+        "type": "git",
+        "url": "file:///home/nicolas/src/zen-browser-flake/"
       },
       "original": {
-        "owner": "MarceColl",
-        "repo": "zen-browser-flake",
-        "type": "github"
+        "type": "git",
+        "url": "file:///home/nicolas/src/zen-browser-flake/"
       }
     }
   },

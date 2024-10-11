@@ -5,7 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     # helix editor, use the master branch
     helix.url = "github:helix-editor/helix/master";
-    zen-browser.url = "github:MarceColl/zen-browser-flake";
+    zen-browser.url = "github:messatsuu/zen-browser-flake";
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {

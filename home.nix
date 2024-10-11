@@ -67,6 +67,7 @@
         cores = with libretro; [
           bsnes-hd
           beetle-psx-hw
+          mgba
         ];
       })
 
