@@ -41,6 +41,7 @@
       ranger
       warp-terminal
       shellcheck
+      killall
 
       wireplumber # session-manager for pipewire
       vesktop # for sceen-sharing
@@ -48,7 +49,11 @@
 
       # php 
       php83Packages.phpstan
+
+      # fonts
       (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+      noto-fonts-cjk
+
       # low level programming
       gleam
       erlang # needed for compiling gleam
@@ -80,7 +85,7 @@
       # sqlite # used for telescope's smart_history plugin
 
       # (lsps since we cannot use mason)
-      # nodePackages.volar
+      nodePackages.volar
       gopls
       nil
 
