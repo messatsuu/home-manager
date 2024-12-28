@@ -74,6 +74,7 @@
           bsnes-hd
           beetle-psx-hw
           mgba
+          fceumm
         ];
       })
 
