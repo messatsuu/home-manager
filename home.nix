@@ -22,7 +22,6 @@
 
     packages = with pkgs; [
       # programming / terminal
-      neovim
       tmux
       jq
       zsh

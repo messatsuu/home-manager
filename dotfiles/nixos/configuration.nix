@@ -138,7 +138,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neovim
+    inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
     tmux
     ripgrep
     fd
