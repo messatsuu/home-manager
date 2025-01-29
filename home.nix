@@ -88,6 +88,7 @@
       nodePackages.volar
       gopls
       nil
+      # asm-lsp
 
       # Hyprdots packages
       bluez
@@ -156,6 +157,9 @@
       package = pkgs.gitFull;
       userName = "messatsuu";
       userEmail = "hirsignicolas@gmail.com";
+      extraConfig = {
+        push = { autoSetupRemote = true; };
+      };
       aliases = {
         undo = "reset HEAD~1 --mixed";
         amend = "commit -a --amend";
