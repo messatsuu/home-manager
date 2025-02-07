@@ -62,6 +62,30 @@
 
   # Configure keymap in X11
   services.xserver = {
+
+    # TODO: GDM, or any greeter does not properly work, since hyprland needs to be attached to a tty to spawn certain background processes.
+    # enable = true;
+    # displayManager.gdm.enable = true;
+    # displayManager.gdm.wayland = true;
+    # displayManager.sessionPackages = [ pkgs.hyprland ];
+    # displayManager.sessionPackages = [
+    #   # sessionPackages accepts a package (derivation) with metadata about the session
+    #   # This just changes the Hyprland.desktop file to use a different Exec command, that ensures that it 
+    #   # starts the session from a tty
+    #   (pkgs.stdenv.mkDerivation {
+    #     name = "custom-wayland-session";
+    #     src = /home/nicolas/.config/home-manager/dotfiles/wayland-sessions;
+    #
+    #     installPhase = ''
+    #       mkdir -p $out/share/wayland-sessions
+    #       cp $src/*.desktop $out/share/wayland-sessions/
+    #     '';
+    #
+    #     passthru.providedSessions = [ "hyprland" ];  # Must match .desktop file
+    #   })
+    # ];
+    # libinput.enable = true;
+
     xkb = {
       layout = "us";
       variant = "";
@@ -114,12 +138,12 @@
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
   hardware.pulseaudio.enable = false;
+  programs.zsh.enable = true;
 
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
   };
-  programs.zsh.enable = true;
 
   xdg.portal = {
     enable = true;
@@ -171,33 +195,6 @@
     jack.enable = true;
   };
 
-  # TODO: fix sddm as display manager
-  # services.xserver.displayManager.sddm = {
-  #   enable = true;
-  #
-  #   wayland = {
-  #     enable = true;
-  #     # compositorCommand = "${lib.getExe' pkgs.kdePackages.kwin "kwin_wayland"} --drm --no-lockscreen --no-global-shortcuts --locale1";
-  #   };
-  #
-  #   extraPackages = with pkgs; [
-  #     kdePackages.layer-shell-qt
-  #   ];
-  #
-  #   settings = {
-  #  #    General = {
-  #  #      GreeterEnvironment = lib.concatStringsSep "," [
-  #  # "QT_WAYLAND_SHELL_INTEGRATION=layer-shell"
-  #  #      ];
-  #  #    };
-  #
-  #     Theme = {
-  #       # Both of these are nessecary otherwise the cursor isn't shown at all
-  #       CursorTheme = "breeze_cursors";
-  #       CursorSize = 24;
-  #     };
-  #   };
-  # };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
