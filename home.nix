@@ -68,10 +68,11 @@
       # Gaming
       gzdoom
       discord
+      pcsx2
       (retroarch.override {
         cores = with libretro; [
           bsnes-hd
-          beetle-psx-hw
+          swanstation
           mgba
           fceumm
         ];
@@ -88,6 +89,8 @@
       nodePackages.volar
       gopls
       nil
+      # Debugger for LLDB
+      vscode-extensions.vadimcn.vscode-lldb
       # asm-lsp
 
       # Hyprdots packages
@@ -134,7 +137,6 @@
       name = "Adwaita";
       size = 16;
     };
-
   };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

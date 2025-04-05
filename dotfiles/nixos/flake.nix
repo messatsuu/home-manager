@@ -3,8 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
-    # helix editor, use the master branch
-    helix.url = "github:helix-editor/helix/master";
     zen-browser.url = "github:messatsuu/zen-browser-flake";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };

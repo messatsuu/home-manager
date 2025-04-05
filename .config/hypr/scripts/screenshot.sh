@@ -1,8 +1,6 @@
 #!/usr/bin/env sh
 
-if [ -z "$XDG_PICTURES_DIR" ] ; then
-    XDG_PICTURES_DIR="$HOME/Pictures"
-fi
+XDG_PICTURES_DIR="$HOME/Pictures"
 
 ScrDir=`dirname "$(realpath "$0")"`
 source $ScrDir/globalcontrol.sh

@@ -174,9 +174,7 @@
     wl-clipboard
     pavucontrol
     #  wget
-    # Here, the helix package is installed from the helix input data source (see flake)
-    inputs.helix.packages."${pkgs.system}".helix
-    inputs.zen-browser.packages."${pkgs.system}".default
+    inputs.zen-browser.packages.${pkgs.system}.default
   ];
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
