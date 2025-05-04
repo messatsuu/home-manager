@@ -11,7 +11,7 @@
   fonts.fontconfig.enable = true;
   # Discord, Spotify-client are proprietary, so we need to enable it.
   nixpkgs.config.allowUnfree = true;
-  
+
   home = {
     username = "nicolas";
 
