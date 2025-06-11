@@ -18,12 +18,12 @@ in
   programs.tmux = {
     enable = true;
 
-    escapeTime = 10;
+    # escapeTime = 10;
     shell = "${pkgs.zsh}/bin/zsh";
     keyMode = "vi";
     baseIndex = 1;
     terminal = "tmux-256color";
-    historyLimit = 1000;
+    # historyLimit = 1000;
     tmuxinator.enable = true;
 
     extraConfig = ''

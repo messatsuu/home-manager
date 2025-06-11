@@ -21,7 +21,7 @@
       bindkey -M viins 'hc' vi-cmd-mode
       bindkey "^P" up-line-or-search
       bindkey "^N" down-line-or-search
-      cbonsai -p # show cool bonsai tree on startup : )
+      # cbonsai -p # show cool bonsai tree on startup : )
     '';
 
     prezto = {
@@ -37,6 +37,7 @@
       ls = "eza --icons auto";
       nsh = "nix-shell";
       mux = "tmuxinator";
+      calc = "bc";
       dock = "result=\${PWD##*/} && docker exec -ti \${result:-/} \${1:-/bin/bash}";
       showLatestNixChanges = "nix store diff-closures \$(\\ls -d /nix/var/nix/profiles/*|tail -2)";
       nix-update = "su -c \"nix-channel --update && cd /etc/nixos/ && nix flake update && sudo nixos-rebuild switch\" && showLatestNixChanges";

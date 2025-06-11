@@ -41,6 +41,7 @@
       warp-terminal
       shellcheck
       killall
+      bc # calculator
 
       wireplumber # session-manager for pipewire
       vesktop # for sceen-sharing
@@ -63,12 +64,16 @@
       keymapp
       spotify
       obsidian
-      emacs29-pgtk
       cbonsai
       # Gaming
       gzdoom
       discord
       pcsx2
+      # Emacs
+      emacs29-pgtk
+      cmake
+      libtool
+      
       (retroarch.override {
         cores = with libretro; [
           bsnes-hd
@@ -156,6 +161,18 @@
   programs = {
     git = {
       enable = true;
+      delta = {
+        enable = true;
+        options = {
+          side-by-side = true;
+          syntax-theme = "OneHalfDark";
+          hyperlinks = true; # makes file paths clickable in the terminal
+          features = "decorations interactive";
+          interactive = {
+            keep-plus-minus-markers = false;
+          };
+        };
+      };
       package = pkgs.gitFull;
       userName = "messatsuu";
       userEmail = "hirsignicolas@gmail.com";
