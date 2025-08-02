@@ -15,7 +15,7 @@
   # nix = {
   #   package = pkgs.nixStable; # Use the stable Nix package if necessary
   #   nixPath = [
-  #     "stable=https://nixos.org/channels/nixos-24.05"
+  #     "stable=https://nixos.org/channels/nixos-25.05"
   #     "nixpkgs=https://nixos.org/channels/nixos-unstable"
   #   ];
   # };
@@ -44,9 +44,16 @@
     options rtw88_pci disable_aspm=1
   '';
 
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-  '';
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    substituters = [
+      "https://cache.nixos.org"
+      "https://nix-community.cachix.org"
+    ];
+    trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
+  };
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -133,6 +140,7 @@
   hardware.nvidia = {
     modesetting.enable = true;
     nvidiaSettings = true;
+    open = true;
   };
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth

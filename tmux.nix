@@ -22,7 +22,7 @@ in
     shell = "${pkgs.zsh}/bin/zsh";
     keyMode = "vi";
     baseIndex = 1;
-    terminal = "tmux-256color";
+    # terminal = "tmux-256color";
     # historyLimit = 1000;
     tmuxinator.enable = true;
 

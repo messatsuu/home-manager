@@ -42,6 +42,7 @@
       shellcheck
       killall
       bc # calculator
+      ark
 
       wireplumber # session-manager for pipewire
       vesktop # for sceen-sharing
@@ -52,7 +53,7 @@
 
       # fonts
       (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-      noto-fonts-cjk
+      noto-fonts-cjk-sans
 
       # low level programming
       gleam
@@ -67,10 +68,10 @@
       cbonsai
       # Gaming
       gzdoom
+      steam
       discord
       pcsx2
-      # Emacs
-      emacs29-pgtk
+      komikku
       cmake
       libtool
       
@@ -91,7 +92,7 @@
       # sqlite # used for telescope's smart_history plugin
 
       # (lsps since we cannot use mason)
-      nodePackages.volar
+      # nodePackages.volar
       gopls
       nil
       # Debugger for LLDB
@@ -107,6 +108,7 @@
       # glib # what is this for??
       dunst
       brightnessctl
+      alacritty
       
       dolphin
       imagemagick
@@ -187,5 +189,22 @@
 
   # Let Home Manager install and manage itself.
     home-manager.enable = true;
+    tofi = {
+      enable = true;
+      settings = {
+        width = "100%";
+        height = "100%";
+        border-width = 0;
+        outline-width = 0;
+        padding-left = "35%";
+        padding-top = "35%";
+        result-spacing = 25;
+        num-results = 5;
+        font = "JetBrainsMono Nerd Font";
+        font-size = 30;
+        background-color = "#000A";
+        selection-color = "#516AA0";
+      };
+    };
   };
 }
