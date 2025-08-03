@@ -2,7 +2,7 @@
   description = "A simple NixOS flake for system configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     zen-browser.url = "github:messatsuu/zen-browser-flake";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };

@@ -30,7 +30,7 @@
     efiSupport = true;
 
     # GRUB Customization
-    splashImage = /home/nicolas/.config/dotfiles/pics/anya.png;
+    splashImage = ./anya.png;
     fontSize = 16;
   };
   boot.loader.efi.canTouchEfiVariables = true;
@@ -114,9 +114,9 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
   };
 
  # Set session variables
@@ -145,7 +145,7 @@
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   programs.zsh.enable = true;
 
   programs.hyprland = {
