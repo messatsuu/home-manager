@@ -13,7 +13,7 @@
     };
     theme = {
       package = (pkgs.catppuccin-gtk.override { accents = [ "peach" ]; size = "standard"; variant = "mocha"; });
-      name = "Catppuccin-Mocha-Standard-Peach-Dark";
+      name = "Catppuccin-Mocha-Standard-Peach-standard";
     };
   };
 }

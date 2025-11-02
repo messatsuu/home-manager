@@ -6,6 +6,7 @@
     ./zsh.nix
     ./kitty.nix
     ./gtk.nix
+    ./qutebrowser.nix
   ];
 
   fonts.fontconfig.enable = true;
@@ -43,6 +44,7 @@
       killall
       bc # calculator
       ark
+      libnotify
 
       wireplumber # session-manager for pipewire
       vesktop # for sceen-sharing
@@ -60,6 +62,7 @@
       erlang # needed for compiling gleam
       gnumake
       go
+      cmake
 
       # free time
       keymapp
@@ -68,11 +71,6 @@
       cbonsai
       # Gaming
       gzdoom
-      steam
-      discord
-      pcsx2
-      komikku
-      cmake
       libtool
       
       (retroarch.override {
@@ -140,7 +138,7 @@
 
     pointerCursor = {
       gtk.enable = true;
-      package = pkgs.gnome.adwaita-icon-theme;
+      package = pkgs.adwaita-icon-theme;
       name = "Adwaita";
       size = 16;
     };
