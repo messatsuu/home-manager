@@ -41,8 +41,8 @@
       ns = "notify-send 'command completed!'";
       dock = "result=\${PWD##*/} && docker exec -ti \${result:-/} \${1:-/bin/bash}";
       showLatestNixChanges = "nix store diff-closures \$(\\ls -d /nix/var/nix/profiles/*|tail -2)";
-      nix-update = "su -c \"cd /etc/nixos/ && nix flake update && sudo nixos-rebuild switch\" && showLatestNixChanges && notify-send 'Nix Update completed!' || notify-send 'Nix Update failed!'";
-      home-update = "nix flake update && home-manager switch";
+      nix-update = "time su -c 'cd /etc/nixos/ && nix flake update && sudo nixos-rebuild switch' && showLatestNixChanges && notify-send 'Nix Update completed!' || notify-send 'Nix Update failed!'";
+      home-update = "time nix flake update && home-manager switch";
       system-update = "nix-update && home-update";
 
       timer-work = "timer -f 45m && dunstify \"Timer\" \"Work session ended\"";
