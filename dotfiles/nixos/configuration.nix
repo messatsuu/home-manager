@@ -8,6 +8,9 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      inputs.dms-overlay.nixosModules.greeter
+      inputs.dms-overlay.nixosModules.dankMaterialShell
+
     ];
 
   # # nix-channels
@@ -148,9 +151,35 @@
   services.pulseaudio.enable = false;
   programs.zsh.enable = true;
 
+  systemd.user.services.dms = {
+    environment = {
+      DMS_MODAL_LAYER = "overlay";
+      DMS_POPOUT_LAYER = "overlay";
+      DMS_NOTIFICATION_LAYER = "overlay";
+    };
+  };
+
+
+  programs.dankMaterialShell = {
+    enable = true;
+    greeter = {
+      enable = true;
+      compositor.name = "niri";
+    };
+  };
+
+  programs.dankMaterialShell.greeter = {
+  };
+
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
+  };
+
+  programs.xwayland.enable = true;
+
+  programs.niri = {
+    enable = true;
   };
 
   xdg.portal = {
@@ -163,7 +192,6 @@
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal-wlr
-      pkgs.xdg-desktop-portal-hyprland
     ];
   };
 
@@ -201,7 +229,9 @@
     jack.enable = true;
   };
 
+  security.rtkit.enable = true;
 
+  # The modern tty replacement
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

@@ -2,13 +2,13 @@
   description = "Home Manager configuration Flake";
 
   inputs = {
-    # Specify the source for Home Manager and Nixpkgs
-    home-manager.url = "github:nix-community/home-manager/release-24.11"; 
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    # Use nixos-unstable for both nixpkgs and home-manager
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { home-manager, nixpkgs, ... }:
+  outputs = { home-manager, nixpkgs, ... } @inputs:
     let
       system = "x86_64-linux";
       custom-overlay = import ./custom-nix-packages/overlay.nix;
@@ -19,12 +19,8 @@
     in {
       homeConfigurations.nicolas = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
         modules = [ ./home.nix ];
-
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
+        extraSpecialArgs = { inherit inputs; };
       };
     };
 }

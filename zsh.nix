@@ -10,7 +10,7 @@
     defaultKeymap = "viins";
 
     # configuration not settable elsewhere, gets set to .zshrc
-    initExtra = ''
+    initContent = ''
       autoload -U colors && colors
       export PS1="%{$fg[green]%}[ %n%{$fg[blue]%}@%m %~ %{$fg[green]%}]%{$reset_color%} "
       zle -N history-beginning-search-backward-end history-search-end
@@ -42,7 +42,7 @@
       dock = "result=\${PWD##*/} && docker exec -ti \${result:-/} \${1:-/bin/bash}";
       showLatestNixChanges = "nix store diff-closures \$(\\ls -d /nix/var/nix/profiles/*|tail -2)";
       nix-update = "time su -c 'cd /etc/nixos/ && nix flake update && sudo nixos-rebuild switch' && showLatestNixChanges && notify-send 'Nix Update completed!' || notify-send 'Nix Update failed!'";
-      home-update = "time nix flake update && home-manager switch";
+      home-update = "time zsh -c 'nix flake update && home-manager switch'";
       system-update = "nix-update && home-update";
 
       timer-work = "timer -f 45m && dunstify \"Timer\" \"Work session ended\"";

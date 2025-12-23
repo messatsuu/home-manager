@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports = [
@@ -43,7 +43,8 @@
       shellcheck
       killall
       bc # calculator
-      ark
+      # TODO: fix
+      # ark
       libnotify
 
       wireplumber # session-manager for pipewire
@@ -54,7 +55,7 @@
       php83Packages.phpstan
 
       # fonts
-      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+      pkgs.nerd-fonts.jetbrains-mono
       noto-fonts-cjk-sans
 
       # low level programming
@@ -73,18 +74,10 @@
       gzdoom
       libtool
       
-      (retroarch.override {
-        cores = with libretro; [
-          bsnes-hd
-          swanstation
-          mgba
-          fceumm
-        ];
-      })
 
       # nvim 
       # needed since lazy.nvim now uses luarocks
-      python39
+      python310
       lua5_1
       lua51Packages.luarocks
       # sqlite # used for telescope's smart_history plugin
@@ -92,6 +85,7 @@
       # (lsps since we cannot use mason)
       # nodePackages.volar
       gopls
+      gparted
       nil
       # Debugger for LLDB
       vscode-extensions.vadimcn.vscode-lldb
@@ -102,13 +96,12 @@
       bluez-tools
       # bluez-utils
       blueman
-      rofi-wayland
+      rofi
       # glib # what is this for??
       dunst
       brightnessctl
       alacritty
       
-      dolphin
       imagemagick
       hyprpicker
       swaylock-effects
@@ -161,6 +154,16 @@
   programs = {
     git = {
       enable = true;
+      package = pkgs.gitFull;
+      userName = "messatsuu";
+      userEmail = "hirsignicolas@gmail.com";
+      extraConfig = {
+        push = { autoSetupRemote = true; };
+      };
+      aliases = {
+        undo = "reset HEAD~1 --mixed";
+        amend = "commit -a --amend";
+      };
       delta = {
         enable = true;
         options = {
@@ -172,16 +175,6 @@
             keep-plus-minus-markers = false;
           };
         };
-      };
-      package = pkgs.gitFull;
-      userName = "messatsuu";
-      userEmail = "hirsignicolas@gmail.com";
-      extraConfig = {
-        push = { autoSetupRemote = true; };
-      };
-      aliases = {
-        undo = "reset HEAD~1 --mixed";
-        amend = "commit -a --amend";
       };
     };
 
@@ -204,5 +197,9 @@
         selection-color = "#516AA0";
       };
     };
+    #
+    # doom-emacs = {
+    #   enable = true;
+    # };
   };
 }

@@ -32,6 +32,8 @@
       if os.path.exists(config.configdir / "theme.py"):
           import theme
           theme.setup(c, 'macchiato', True)
+
+      c.tabs.padding = {"bottom": 10, "left": 10, "right": 10, "top": 10}
     '';
 
     searchEngines = {
@@ -40,15 +42,20 @@
       hm = "https://home-manager-options.extranix.com/?query={}&release=release-25.05";
       no = "https://search.nixos.org/options?channel=25.05&from=0&size=50&sort=relevance&type=packages&query={}";
     };
+
     settings = {
       # General
-      tabs.position = "left";
+      tabs = {
+        position = "left";
+      };
+
+      statusbar.position = "top";
       # Fonts
       fonts.default_size = "15pt";
       fonts.default_family = "JetBrainsMono Nerd Font";
       colors.webpage.darkmode.enabled = true;
-
     };
+
     keyBindings = {
       normal = {
         "e" = "cmd-set-text -s :open -t";
@@ -58,6 +65,10 @@
         # URL shortcuts
         "<Space>c" = "open https://chatgpt.com";
         "<Space>g" = "open https://github.com/messatsuu";
+        ">" = "tab-move +";
+        "<" = "tab-move -";
+        "w" = "open -w";
+        "W" = "tab-give";
       };
     };
   };
