@@ -194,6 +194,17 @@
       pkgs.xdg-desktop-portal-wlr
     ];
   };
+  xdg.mimeApps = {
+    enable = true;
+    # NOTE: I just replaced them directly in ~/.config/mimeapps.list, because this wouldn't change it?
+    defaultApplications = {
+      # "inode/directory" = [ "thunar.desktop" ];
+      # "x-scheme-handler/mailto" = [ "thunderbird.desktop" ];
+      "application/pdf" = [ "org.pwmt.zathura.desktop" ];
+      "x-scheme-handler/http"  = [ "org.qutebrowser.qutebrowser.desktop" ];
+      "x-scheme-handler/https" = [ "org.qutebrowser.qutebrowser.desktop" ];
+    };
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

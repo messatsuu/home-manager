@@ -155,28 +155,34 @@
     git = {
       enable = true;
       package = pkgs.gitFull;
-      userName = "messatsuu";
-      userEmail = "hirsignicolas@gmail.com";
-      extraConfig = {
+
+      settings = {
+        aliases = {
+          undo = "reset HEAD~1 --mixed";
+          amend = "commit -a --amend";
+        };
+        user = {
+          email = "hirsignicolas@gmail.com";
+          name = "messatsuu";
+        };
         push = { autoSetupRemote = true; };
       };
-      aliases = {
-        undo = "reset HEAD~1 --mixed";
-        amend = "commit -a --amend";
-      };
-      delta = {
-        enable = true;
-        options = {
-          side-by-side = true;
-          syntax-theme = "OneHalfDark";
-          hyperlinks = true; # makes file paths clickable in the terminal
-          features = "decorations interactive";
-          interactive = {
-            keep-plus-minus-markers = false;
-          };
+    };
+
+    delta = {
+      enable = true;
+      enableGitIntegration = true;
+      options = {
+        side-by-side = true;
+        syntax-theme = "OneHalfDark";
+        hyperlinks = true; # makes file paths clickable in the terminal
+        features = "decorations interactive";
+        interactive = {
+          keep-plus-minus-markers = false;
         };
       };
     };
+
 
   # Let Home Manager install and manage itself.
     home-manager.enable = true;
