@@ -1,0 +1,126 @@
+colorscheme vertical_tabs_custom
+
+" Options
+set adblocker=update
+set devtoolsposition=vsplit
+set downloadmethod=confirm
+set followchars=numbers
+set guifontsize=16
+set mapsuggestposition=bottomleft
+set permissioncamera=ask
+set permissiondisplaycapture=ask
+set permissionmediadevices=allow
+set permissionmicrophone=ask
+set permissionpersistentstorage=allow
+set redirecttohttp
+set restoretabs=pinned
+set tabclosefocus=right
+set tabreopenposition=right
+set useragent=%firefox
+set windowtitle="%title - %app"
+set guitabbar="always"
+set guifullscreentabbar="always"
+set guinavbar="always"
+set guifullscreennavbar="always"
+set vimcommand="kitty -- nvim"
+set searchengine=["https://www.google.com/search?hl=en&q=%s"]
+set followelement=["url","onclick","inputs-insert","inputs-click"]
+set follownewtabswitch!
+set mousenewtabswitch!
+set splitright
+
+" Mappings
+nmap wi <:devtools>
+nmap Sh <:history>
+nmap Ss <:help>
+nmap <C-A-p> <:print>
+nmap <C-W> <:quit>
+nmap ZQ <:quit>
+nmap gd <:write>
+nunmap [
+nunmap ]
+nunmap {
+nunmap }
+nunmap w
+nunmap b
+nmap [[ <previousPage>
+nmap ]] <nextPage>
+nmap {{ <previousPageNewTab>
+nmap }} <nextPageNewTab>
+nmap gU <openNewTabWithCurrentUrl><CR><toParentUrl>
+nmap g0 <:b 0>
+nmap g^ <:b -1>
+nmap g$ <:b -1>
+nmap <C-^> <:buffer #>
+nmap <C-Tab> <:buffer #>
+nmap ga <:tabnew>
+nmap gC <openNewTabWithCurrentUrl><CR>
+nmap gJ <moveTabForward>
+nmap gK <moveTabBackward>
+nmap <C-S-PageUp> <moveTabForward>
+nmap <C-S-PageDown> <moveTabBackward>
+" This is disabled as it prevents use of window split mappings.
+" See :h splitting for more information on window splits
+" nmap <C-w> <:close>
+nmap = <zoomReset>
+nmap <C-p> <:pin>
+nmap <C-s> <stopLoadingPage>
+nmap o <toExploreMode><BS>
+nmap go <toExploreMode><End>
+nmap gt <toCommandMode>buffer<Space>
+nmap e <:tabnew><toExploreMode>
+nunmap p
+nmap pp <openFromClipboard>
+nmap Pp <:tabnew><openFromClipboard>
+nmap sk <toCommandMode>map<Space>
+nmap ss <toCommandMode>set<Space>
+
+imap <C-e> <editWithVim>
+
+cmap <C-e> <editWithVim>
+
+emap <C-e> <editWithVim>
+emap <C-Tab> <nextSuggestionSection>
+emap <C-S-Tab> <prevSuggestionSection>
+
+smap <C-e> <editWithVim>
+
+pmap i <p.insertAtPosition>
+pmap c <toNormalMode>
+pmap e <p.moveFastRight>
+pmap H <p.scrollLeft>
+pmap L <p.scrollRight>
+pmap <Space> <p.startVisualSelect>
+
+vmap v <p.start>
+vmap <CR> <p.copyText>
+vmap <C-Space> <toNormalMode><p.start><p.startVisualSelect>
+
+" vim: ft=vim
+"
+" Qutebrowser Mappings
+nmap D <:close>K
+nmap <Space>g <toExploreMode>github.com/messatsuu<CR>
+nmap <Space>c <toExploreMode>chatgpt.com<CR>
+nmap . <toInsertMode>
+nmap i <insertAtFirstInput>
+nmap <Space>k <:reloadconfig>
+nmap c <:devtools>
+
+nmap J <nextTab>
+nmap K <previousTab>
+
+" Vim Mappings
+nmap <A-d> <C-w>h
+nmap <A-h> <C-w>j
+nmap <A-t> <C-w>k
+nmap <A-n> <C-w>l
+nmap <Left> <increaseWidthSplitWindow>
+nmap <Right> <decreaseWidthSplitWindow>
+nmap <Space>d :close #<CR>
+nmap <Down> <C-w>+
+nmap <Up> <C-w>-
+
+nmap <Space>v <toCommandMode>set storenewvisits=<CR>
+nmap <Space>V <toCommandMode>set storenewvisits=["pages"]<CR>
+nmap x <toggleSourceViewer>

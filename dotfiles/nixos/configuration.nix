@@ -9,7 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       inputs.dms-overlay.nixosModules.greeter
-      inputs.dms-overlay.nixosModules.dankMaterialShell
+      inputs.dms-overlay.nixosModules.dank-material-shell
 
     ];
 
@@ -46,6 +46,10 @@
   boot.extraModprobeConfig = ''
     options rtw88_pci disable_aspm=1
   '';
+  boot.kernelParams = [
+    "rtw88_core.disable_ps=Y"
+    "rtw88_pci.disable_aspm=Y"
+  ];
 
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
@@ -56,6 +60,7 @@
     trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
+    max-jobs = 4;
   };
 
   networking.hostName = "nixos"; # Define your hostname.
@@ -160,15 +165,16 @@
   };
 
 
-  programs.dankMaterialShell = {
+  programs.dank-material-shell = {
     enable = true;
     greeter = {
       enable = true;
       compositor.name = "niri";
     };
+    enableSystemMonitoring = false;
   };
 
-  programs.dankMaterialShell.greeter = {
+  programs.dank-material-shell.greeter = {
   };
 
   programs.hyprland = {
@@ -194,21 +200,11 @@
       pkgs.xdg-desktop-portal-wlr
     ];
   };
-  xdg.mimeApps = {
-    enable = true;
-    # NOTE: I just replaced them directly in ~/.config/mimeapps.list, because this wouldn't change it?
-    defaultApplications = {
-      # "inode/directory" = [ "thunar.desktop" ];
-      # "x-scheme-handler/mailto" = [ "thunderbird.desktop" ];
-      "application/pdf" = [ "org.pwmt.zathura.desktop" ];
-      "x-scheme-handler/http"  = [ "org.qutebrowser.qutebrowser.desktop" ];
-      "x-scheme-handler/https" = [ "org.qutebrowser.qutebrowser.desktop" ];
-    };
-  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    (inputs.vieb-nix.packagesFunc pkgs).vieb
     inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
     tmux
     ripgrep

@@ -2,17 +2,12 @@
   description = "A simple NixOS flake for system configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     zen-browser.url = "github:messatsuu/zen-browser-flake";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    vieb-nix.url = "github:tejing1/vieb-nix";
 
-    # TODO: is this needed?
-    quickshell = {
-      # add ?ref=<tag> to track a tag
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-      # Prevents mismatch
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+
     dms-overlay = {
       url = "github:AvengeMedia/DankMaterialShell/stable";
       inputs.nixpkgs.follows = "nixpkgs";

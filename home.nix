@@ -42,6 +42,7 @@
       warp-terminal
       shellcheck
       killall
+      vesktop
       bc # calculator
       # TODO: fix
       # ark
@@ -52,7 +53,7 @@
       xdg-utils # for opening urls in the browser (e.g. xdg-open)
 
       # php 
-      php83Packages.phpstan
+      phpstan
 
       # fonts
       pkgs.nerd-fonts.jetbrains-mono
@@ -80,6 +81,7 @@
       python310
       lua5_1
       lua51Packages.luarocks
+      tree-sitter_0_26
       # sqlite # used for telescope's smart_history plugin
 
       # (lsps since we cannot use mason)
@@ -123,10 +125,14 @@
     };
 
     # creates a symlink to the dotfiles in the home-manager directory (if the directory doesn't exist yet)
-    activation.linkMyFiles = config.lib.dag.entryAfter ["writeBoundary"] ''
+    activation.linkGeneralConfigFiles = config.lib.dag.entryAfter ["writeBoundary"] ''
       for directory in ${config.xdg.configHome}/home-manager/.config/*; do
         [[ -d "${config.xdg.configHome}/$(basename $directory)" ]] || ln -s $directory "${config.xdg.configHome}/$(basename $directory)";
       done
+    '';
+
+    activation.linkViebConfig = config.lib.dag.entryAfter ["writeBoundary"] ''
+      [[ -d "~/.vieb" ]] || ln -s ${config.xdg.configHome}/home-manager/dotfiles/.vieb ~;
     '';
 
     pointerCursor = {
@@ -203,9 +209,5 @@
         selection-color = "#516AA0";
       };
     };
-    #
-    # doom-emacs = {
-    #   enable = true;
-    # };
   };
 }

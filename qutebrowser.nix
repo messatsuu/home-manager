@@ -59,6 +59,7 @@
     keyBindings = {
       normal = {
         "e" = "cmd-set-text -s :open -t";
+        "E" = "cmd-set-text -s :open -p";
         "i" = "hint --first inputs";
         "I" = "hint inputs";
         "." = "mode-enter insert";

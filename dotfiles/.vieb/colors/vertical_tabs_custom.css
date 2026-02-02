@@ -1,0 +1,203 @@
+:root {
+    --bg: #181825;
+    --fg: #cdd6f4;
+    --tab-background: #1e1e2e;
+    --tab-suspended: #11111b;
+    --visible-tab: #313244;
+    --tab-split: #89b4fa;
+    --tab-audio: #94e2d5;
+    --tab-muted: #a6adc8;
+    --tab-muted-playing: #f5c2e7;
+    --tab-crashed: #f38ba8;
+    --tab-scrollbar: #585b70;
+    --mode-normal-fg: var(--fg);
+    --mode-normal-bg: var(--bg);
+    --mode-command-fg: var(--bg);
+    --mode-command-bg: #74c7ec;
+    --mode-insert-fg: var(--bg);
+    --mode-insert-bg: #eba0ac;
+    --mode-follow-fg: var(--bg);
+    --mode-follow-bg: #f9e2af;
+    --mode-explore-fg: var(--bg);
+    --mode-explore-bg: #94e2d5;
+    --mode-search-fg: var(--bg);
+    --mode-search-bg: #cba6f7;
+    --mode-pointer-fg: var(--bg);
+    --mode-pointer-bg: #f5e0dc;
+    --mode-visual-fg: var(--bg);
+    --mode-visual-bg: #a6e3a1;
+    --url-default: #94e2d5;
+    --url-search: #94e2d5;
+    --url-searchwords: #94e2d5;
+    --url-url: #94e2d5;
+    --url-suggest: #94e2d5;
+    --url-file: #94e2d5;
+    --url-invalid: #94e2d5;
+    --suggestions-border: #181825;
+    --suggestions-bg: #181825;
+    --suggestions-selected: #313244;
+    --suggestions-searchwords: #f9e2af;
+    --suggestions-url: #a6adc8;
+    --suggestions-file: #a6adc8;
+    --notification-border: var(--bg);
+    --notification-date: #a6adc8;
+    --notification-permission: #a6adc8;
+    --notification-error: #f38ba8;
+    --notification-warning: #f9e2af;
+    --notification-info: #89dceb;
+    --notification-success: #a6e3a1;
+    --url-hover-fg: #bac2de;
+    --url-hover-bg: #313244;
+    --screenshot-highlight: #f5c2e7;
+    --screenshot-highlight-background: #f5c2e7;
+    /* special pages */
+    --link-color: #cba6f7;
+    --link-underline: none;
+    --scrollbar-bg: #313244;
+    --scrollbar-thumb: #45475a;
+    --button-disabled: #45475a;
+    --code-fg: #f5e0dc;
+    --code-bg: #181825;
+    --code-command: #f2cdcd;
+    --placeholder-text: #a6adc8;
+    --special-page-element-bg: #313244;
+    --special-page-element-border: #313244;
+    --input-unfocused: #313244;
+    --input-focused: #585b70;
+    --download-progress-fg: #585b70;
+    --download-progress-bg: #313244;
+    --helppage-h1: var(--fg);
+    --helppage-h2: var(--fg);
+    --helppage-h3: var(--fg);
+    --helppage-countable: #f9e2af;
+    --helppage-range-compat: #f9e2af;
+    --helppage-nativetheme-fg-light: #5c5f77;
+    --helppage-nativetheme-bg-light: #eff1f5;
+    --helppage-nativetheme-fg-dark: #bac2de;
+    --helppage-nativetheme-bg-dark: #1e1e2e;
+    /* sourceviewer */
+    --syntax-keyword: #f38ba8;
+    --syntax-entity: #a6e3a1;
+    --syntax-constant: #94e2d5;
+    --syntax-string: #89dceb;
+    --syntax-variable: #eba0ac;
+    --syntax-comment: #a6adc8;
+    --syntax-entity-tag: #cba6f7;
+    --syntax-markup-heading: #a6e3a1;
+    --syntax-markup-list: #f5c2e7;
+    --syntax-markup-emphasis: #94e2d5;
+    --syntax-markup-addition-fg: #cba6f7;
+    --syntax-markup-addition-bg: #181825;
+    --syntax-markup-deletion-fg: #f2cdcd;
+    --syntax-markup-deletion-bg: #f38ba8;
+    /* follow links */
+    --follow-text: var(--bg);
+    --follow-url-bg: #fab387;
+    --follow-url-border: #fab38766;
+    --follow-url-hover: #fab38766;
+    --follow-click-bg: #89dceb;
+    --follow-click-border: #89dceb66;
+    --follow-click-hover: #89dceb66;
+    --follow-insert-bg: #eba0ac;
+    --follow-insert-border: #eba0ac66;
+    --follow-insert-hover: #eba0ac66;
+    --follow-onclick-bg: #cba6f7;
+    --follow-onclick-border:#cba6f766;
+    --follow-onclick-hover: #cba6f766;
+    --follow-media-bg: #a6e3a1;
+    --follow-media-border: #a6e3a166;
+    --follow-media-hover: #a6e3a166;
+    --follow-image-bg: #f9e2af;
+    --follow-image-border: #f9e2af66;
+    --follow-image-hover: #f9e2af66;
+    --follow-other-bg: #cdd6f4;
+    --follow-other-border: #cdd6f466;
+    --follow-other-hover: #cdd6f466;
+
+    --tab-bar-size: 12vw;
+    --tab-bar-padding: 10px;
+    --url-background: #585b70;
+}
+
+#tabs {
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: absolute;
+    left: 0;
+    width: var(--tab-bar-size);
+    max-height: calc(100vh - 2em);
+    top: 2em;
+    flex-wrap: wrap;
+    padding: var(--tab-bar-padding);
+    gap: .4em;
+}
+#tabs > span {
+    min-height: 1.5em;
+    max-height: 1.5em;
+    min-width: 10vw !important;
+    padding: 7px 7px;
+    font-size: large;
+    width: var(--tab-bar-size);
+    border-radius: 10px;
+}
+#page-container {
+    height: calc(100vh - 2em);
+    position: absolute;
+    top: 2em;
+    left: calc(var(--tab-bar-size) + 30px);
+    width: calc(100vw - var(--tab-bar-size));
+}
+#app.fullscreen #page-container {
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+}
+#app.tabshidden #page-container {
+    width: 100vw;
+    left: 0;
+}
+#app.navigationhidden #page-container {
+    height: 100vh;
+    top: 0;
+}
+#app.navigationhidden #tabs {
+    top: 0;
+    max-height: 100vh;
+}
+#tabs::-webkit-scrollbar {
+    width: .2em;
+    height: auto;
+}
+
+#url {
+    text-align: center;
+    transition: transform 0.2s ease;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--url-background);
+
+    /* make url-bar smaller */
+    flex: none;
+    margin: 6px auto;
+    width: min(60em, max(40em, 100%));
+    max-width: 60em;
+}
+
+#containername {
+    margin: auto 0;
+}
+
+#url:focus {
+    transform: scale(1.4);
+}
+
+#tabs > span {
+  transition: background-color 400ms ease;
+}
+
+#suggest-dropdown > div {
+    display: flex;
+    justify-content: center;
+    transform: translateX(calc(-0.5 * var(--tab-bar-size)));
+}
