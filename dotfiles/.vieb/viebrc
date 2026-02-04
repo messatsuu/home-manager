@@ -74,6 +74,12 @@ nmap pp <openFromClipboard>
 nmap Pp <:tabnew><openFromClipboard>
 nmap sk <toCommandMode>map<Space>
 nmap ss <toCommandMode>set<Space>
+pmap j 2<p.scrollDown>
+pmap k 2<p.scrollUp>
+pmap J 5<p.scrollDown>
+pmap K 5<p.scrollUp>
+pmap <C-j> 10<p.scrollDown>
+pmap <C-k> 10<p.scrollUp>
 
 imap <C-e> <editWithVim>
 
