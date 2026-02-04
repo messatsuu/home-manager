@@ -1,7 +1,7 @@
 :root {
     --bg: #181825;
     --fg: #cdd6f4;
-    --tab-background: #1e1e2e;
+    --tab-background: #181825;
     --tab-suspended: #11111b;
     --visible-tab: #313244;
     --tab-split: #89b4fa;
@@ -173,7 +173,7 @@
 #url {
     text-align: center;
     transition: transform 0.2s ease;
-    border-radius: 10px;
+    border-radius: 8px;
     border: none;
     background-color: var(--url-background);
 

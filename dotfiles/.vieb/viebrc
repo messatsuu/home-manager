@@ -1,7 +1,7 @@
 colorscheme vertical_tabs_custom
 
 " Options
-set adblocker=update
+" set adblocker=update
 set devtoolsposition=vsplit
 set downloadmethod=confirm
 set followchars=numbers
