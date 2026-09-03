@@ -4,8 +4,9 @@ colorscheme vertical_tabs_custom
 " set adblocker=update
 set devtoolsposition=vsplit
 set downloadmethod=confirm
-set followchars=numbers
-set guifontsize=16
+set followchars=dvorakhome
+set guifontsize=21
+set countlimit=2000
 set mapsuggestposition=bottomleft
 set permissioncamera=ask
 set permissiondisplaycapture=ask
@@ -24,10 +25,22 @@ set guinavbar="always"
 set guifullscreennavbar="always"
 set vimcommand="kitty -- nvim"
 set searchengine=["https://www.google.com/search?hl=en&q=%s"]
+set searchwords={"j": "cloudtec.atlassian.net/browse/%s", "b": "bitbucket.org/cloudtec/%s", "bb": "bitbucket.org/cloudtec/%s/branches", "p": "bitbucket.org/cloudtec/%s/pull-requests", "c": "bitbucket.org/cloudtec/%s/commits"}
 set followelement=["url","onclick","inputs-insert","inputs-click"]
-set follownewtabswitch!
-set mousenewtabswitch!
+" Show a loading line under the navbar as well as the tab spinner.
+" The theme styles #loading-progress; Vieb only toggles that element
+" for loadingindicator=line or =all.
+set loadingindicator=all
+" Open new tabs in the background (middle-click a link, or follow mode's
+" new-tab variant). Written as explicit =false rather than the '!' toggle
+" form: ':reloadconfig' re-runs this file without resetting defaults, so a
+" toggle flips the value on every reload.
+set follownewtabswitch=false
+set mousenewtabswitch=false
 set splitright
+set permissioncertificateerror=ask
+" make esc behave like it were entered in insert mode
+set passthroughkeys={".*": "<Esc>"}
 
 " Mappings
 nmap wi <:devtools>
@@ -63,23 +76,16 @@ nmap <C-S-PageDown> <moveTabBackward>
 " See :h splitting for more information on window splits
 " nmap <C-w> <:close>
 nmap = <zoomReset>
-nmap <C-p> <:pin>
-nmap <C-s> <stopLoadingPage>
+" nmap <C-p> <:pin>
+nmap <C-p> <stopLoadingPage>
 nmap o <toExploreMode><BS>
-nmap go <toExploreMode><End>
+nmap a <toExploreMode><End>
 nmap gt <toCommandMode>buffer<Space>
 nmap e <:tabnew><toExploreMode>
 nunmap p
 nmap pp <openFromClipboard>
-nmap Pp <:tabnew><openFromClipboard>
 nmap sk <toCommandMode>map<Space>
 nmap ss <toCommandMode>set<Space>
-pmap j 2<p.scrollDown>
-pmap k 2<p.scrollUp>
-pmap J 5<p.scrollDown>
-pmap K 5<p.scrollUp>
-pmap <C-j> 10<p.scrollDown>
-pmap <C-k> 10<p.scrollUp>
 
 imap <C-e> <editWithVim>
 
@@ -97,6 +103,14 @@ pmap e <p.moveFastRight>
 pmap H <p.scrollLeft>
 pmap L <p.scrollRight>
 pmap <Space> <p.startVisualSelect>
+pmap j 2<p.scrollDown>
+pmap k 2<p.scrollUp>
+pmap J 5<p.scrollDown>
+pmap K 5<p.scrollUp>
+pmap <C-j> 15<p.scrollDown>
+pmap <C-k> 15<p.scrollUp>
+pmap gg 2000<p.scrollUp>
+pmap G 2000<p.scrollDown>
 
 vmap v <p.start>
 vmap <CR> <p.copyText>
@@ -105,16 +119,30 @@ vmap <C-Space> <toNormalMode><p.start><p.startVisualSelect>
 " vim: ft=vim
 "
 " Qutebrowser Mappings
-nmap D <:close>K
-nmap <Space>g <toExploreMode>github.com/messatsuu<CR>
-nmap <Space>c <toExploreMode>chatgpt.com<CR>
+nmap D <:close>k
 nmap . <toInsertMode>
 nmap i <insertAtFirstInput>
 nmap <Space>k <:reloadconfig>
-nmap c <:devtools>
+nmap c <:devtools window>
 
-nmap J <nextTab>
-nmap K <previousTab>
+" URL Shortcuts
+"" General
+nmap <Space>d <:open https://cloudtec.atlassian.net/jira/dashboards/10200>
+nmap <Space>l <:open https://bitbucket.org/cloudtec/workspace/overview>
+nmap <Space>c <:open https://chatgpt.com/>
+nmap <Space>g <:open https://github.com/messatsuu>
+nmap <Space>w <:open https://cloudtec.atlassian.net/issues/?filter=15246>
+
+"" Projects
+nmap <Space>hh <:open https://opancare.dev.cloudtec.ch/en/admin>
+nmap <Space>ha <:open https://asps.dev.cloudtec.ch/de/organization>
+nmap <Space>ho <:open https://my-oda.dev.cloudtec.ch/de>
+
+nmap j <nextTab>
+nmap k <previousTab>
+
+nmap J <scrollDown>
+nmap K <scrollUp>
 
 " Vim Mappings
 nmap <A-d> <C-w>h
@@ -123,10 +151,30 @@ nmap <A-t> <C-w>k
 nmap <A-n> <C-w>l
 nmap <Left> <increaseWidthSplitWindow>
 nmap <Right> <decreaseWidthSplitWindow>
-nmap <Space>d :close #<CR>
+" nmap <Space>d :close #<CR>
 nmap <Down> <C-w>+
 nmap <Up> <C-w>-
 
 nmap <Space>v <toCommandMode>set storenewvisits=<CR>
 nmap <Space>V <toCommandMode>set storenewvisits=["pages"]<CR>
 nmap x <toggleSourceViewer>
+
+" Vertical tab bar toggle (<Space>b)
+" Each command applies its theme and then rebinds <Space>b to the other one,
+" so a single key flips back and forth.
+command! sidebarhide <:colorscheme vertical_tabs_hidden><:nmap <Space>b <:sidebarshow>>
+command! sidebarshow <:colorscheme vertical_tabs_custom><:nmap <Space>b <:sidebarhide>>
+nmap <Space>b <:sidebarhide>
+
+" Tab marking (<Space>e)
+" Toggles a highlight background on the CURRENT tab, for grouping tabs
+" visually. Vieb 12.6 has no per-tab colour/label feature, so this rides on
+" the per-tab `muted` flag -- the only toggleable per-tab state that leaves
+" tab order and page state alone.
+" TRADE-OFF: a marked tab has its audio muted. Press <Space>e again to
+" unmark and unmute. The colour is --tab-marked-bg in the colorschemes.
+" PERSISTENCE: the mark lasts as long as the tab does. :mute writes it to
+" disk, so it also survives a restart for any tab that is itself restored --
+" with restoretabs=pinned above, that means pinned tabs only.
+nmap <Space>e <:mute>
+

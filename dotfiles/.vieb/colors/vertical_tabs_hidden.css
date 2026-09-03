@@ -1,7 +1,7 @@
 /*
- * vertical_tabs_custom.css
+ * vertical_tabs_hidden.css
  *
- * Catppuccin-flavoured theme with a vertical tab bar down the left side.
+ * Same as vertical_tabs_custom.css but with the vertical tab bar hidden.
  *
  * Companion themes, toggled with <Space>l (see the sidebar toggle block in
  * viebrc). Both files are generated from one template: everything below the
@@ -132,7 +132,7 @@
 
 
     /* ---- layout tunables ---- */
-    --tab-bar-size: clamp(9em, 13vw, 17em);
+    --tab-bar-size: 0px;
     --tab-bar-padding: .5em;
     --tab-font-size: .8em;
     --tab-bar-border: rgba(137, 180, 250, .15);
@@ -502,4 +502,11 @@
     #suggest-dropdown > div {
         width: auto;
     }
+}
+
+
+/* ---- sidebar hidden ---- */
+
+#tabs {
+    display: none;
 }
